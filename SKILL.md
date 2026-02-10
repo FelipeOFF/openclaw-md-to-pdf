@@ -97,7 +97,54 @@ node scripts/convert.js documento.md --header "Título" --footer "Página {page}
 ## 📝 Requisitos
 
 - Node.js >= 18.0.0
-- Chrome ou Chromium instalado
+- **Chrome ou Chromium instalado** (requerido pelo Puppeteer)
+
+### Instalando o Chrome/Chromium
+
+Esta ferramenta requer Chrome/Chromium. O Puppeteer tentará baixar automaticamente, mas você pode precisar instalar manualmente:
+
+**Opção 1: Automático (via Puppeteer)**
+```bash
+npx puppeteer browsers install chrome
+```
+
+**Opção 2: Gerenciador de pacotes do sistema**
+```bash
+# Ubuntu/Debian
+sudo apt-get install chromium-browser
+
+# macOS
+brew install chromium
+```
+
+**Opção 3: Variável de ambiente**
+Se o Chrome estiver em local não padrão:
+```bash
+export PUPPETEER_EXECUTABLE_PATH=/caminho/para/chrome
+```
+
+## 🔧 Solução de Problemas
+
+### Erro: "Cannot find module 'commander'"
+```bash
+npm install commander glob --save
+```
+
+### Erro: "Failed to launch browser" ou "No usable sandbox"
+O Chrome pode não estar instalado. Instale usando um dos métodos acima.
+
+### Erro: "Chrome executable not found"
+Defina o caminho do Chrome explicitamente:
+```bash
+export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+```
+
+### Falha no download do Puppeteer
+Se o Puppeteer falhar ao baixar o Chrome, pule e instale manualmente:
+```bash
+PUPPETEER_SKIP_DOWNLOAD=true npm install
+# Depois instale o Chrome manualmente (veja Requisitos)
+```
 
 ## 📄 Licença
 
