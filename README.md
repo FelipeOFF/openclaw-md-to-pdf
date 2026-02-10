@@ -120,8 +120,58 @@ Options:
 ## 🛠️ Requirements
 
 - Node.js >= 18.0.0
-- Chrome or Chromium browser
+- **Chrome or Chromium browser** (required by Puppeteer)
 - OpenClaw >= 1.0.0 (for plugin mode)
+
+### Installing Chrome/Chromium
+
+This tool requires a Chrome/Chromium installation. Puppeteer will try to download it automatically, but you may need to install it manually:
+
+**Option 1: Automatic (via Puppeteer)**
+```bash
+npx puppeteer browsers install chrome
+```
+
+**Option 2: System Package Manager**
+```bash
+# Ubuntu/Debian
+sudo apt-get install chromium-browser
+
+# macOS
+brew install chromium
+
+# Or download manually from:
+# https://www.chromium.org/getting-involved/download-chromium
+```
+
+**Option 3: Environment Variable**
+If Chrome is installed in a non-standard location:
+```bash
+export PUPPETEER_EXECUTABLE_PATH=/path/to/chrome
+```
+
+## 🔧 Troubleshooting
+
+### Error: "Cannot find module 'commander'"
+```bash
+npm install commander glob --save
+```
+
+### Error: "Failed to launch browser" or "No usable sandbox"
+Chrome may not be installed. Install it using one of the methods in the Requirements section above.
+
+### Error: "Chrome executable not found"
+Set the Chrome path explicitly:
+```bash
+export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+```
+
+### Puppeteer download fails
+If Puppeteer fails to download Chrome, skip it and install manually:
+```bash
+PUPPETEER_SKIP_DOWNLOAD=true npm install
+# Then install Chrome manually (see Requirements section)
+```
 
 ## 📄 License
 
