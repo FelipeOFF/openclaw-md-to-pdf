@@ -52,6 +52,9 @@ async function convertToPdf(options) {
   // Build options
   const pdfOptions = {
     dest: finalOutputFile,
+    launch_options: {
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    },
     ...themes[theme] || themes.default
   };
   
