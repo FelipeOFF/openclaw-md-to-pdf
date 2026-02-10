@@ -12,21 +12,43 @@ const glob = require('glob');
 const themes = {
   default: {},
   github: {
-    // GitHub-like styling via CSS (embedded)
-    stylesheet: [
-      `body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; }`,
-      `h1, h2, h3 { color: #0366d6; border-bottom: 1px solid #eaecef; }`,
-      `code { background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; }`,
-      `pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow: auto; }`,
-      `table { border-collapse: collapse; width: 100%; }`,
-      `th, td { border: 1px solid #dfe2e5; padding: 6px 13px; }`,
-      `th { background: #f6f8fa; font-weight: 600; }`
-    ]
+    css: `
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; }
+      h1, h2, h3 { color: #0366d6; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+      h1 { font-size: 2em; }
+      h2 { font-size: 1.5em; }
+      h3 { font-size: 1.25em; }
+      code { background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+      pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow: auto; }
+      pre code { background: transparent; padding: 0; }
+      table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+      th, td { border: 1px solid #dfe2e5; padding: 6px 13px; }
+      th { background: #f6f8fa; font-weight: 600; }
+      tr:nth-child(2n) { background: #f6f8fa; }
+      blockquote { border-left: 0.25em solid #dfe2e5; color: #6a737d; padding: 0 1em; margin: 0; }
+      a { color: #0366d6; text-decoration: none; }
+      img { max-width: 100%; }
+      hr { border: 0; border-top: 1px solid #e1e4e8; margin: 1.5em 0; }
+      ul, ol { padding-left: 2em; }
+      li { margin: 0.25em 0; }
+    `,
+    body_class: 'markdown-body'
   },
   latex: {
+    css: `
+      body { font-family: "Computer Modern", Georgia, serif; line-height: 1.6; font-size: 11pt; }
+      h1, h2, h3 { font-family: "Computer Modern", Georgia, serif; }
+      h1 { font-size: 1.8em; border-bottom: 2px solid #333; }
+      h2 { font-size: 1.5em; border-bottom: 1px solid #666; }
+      code { font-family: "Courier New", monospace; background: #f4f4f4; padding: 0.2em 0.4em; }
+      pre { background: #f4f4f4; padding: 1em; border-left: 3px solid #333; }
+      table { border-collapse: collapse; margin: 1em 0; }
+      th, td { border: 1px solid #333; padding: 0.5em; }
+      th { background: #e0e0e0; }
+    `,
     pdf_options: {
       format: 'A4',
-      margin: { top: '2cm', right: '2cm', bottom: '2cm', left: '2cm' }
+      margin: { top: '2.5cm', right: '2.5cm', bottom: '2.5cm', left: '2.5cm' }
     }
   }
 };
