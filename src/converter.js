@@ -12,7 +12,16 @@ const glob = require('glob');
 const themes = {
   default: {},
   github: {
-    stylesheet: [require.resolve('md-to-pdf/dist/github.css')]
+    // GitHub-like styling via CSS (embedded)
+    stylesheet: [
+      `body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; }`,
+      `h1, h2, h3 { color: #0366d6; border-bottom: 1px solid #eaecef; }`,
+      `code { background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; }`,
+      `pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow: auto; }`,
+      `table { border-collapse: collapse; width: 100%; }`,
+      `th, td { border: 1px solid #dfe2e5; padding: 6px 13px; }`,
+      `th { background: #f6f8fa; font-weight: 600; }`
+    ]
   },
   latex: {
     pdf_options: {
