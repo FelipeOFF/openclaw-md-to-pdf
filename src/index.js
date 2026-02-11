@@ -6,6 +6,28 @@
 const { convertToPdf, convertBatch } = require('./converter');
 
 /**
+ * Register plugin with OpenClaw
+ * @param {Object} context - OpenClaw plugin context
+ */
+function register(context) {
+  // Plugin auto-registers via openclaw.plugin.json
+  // Tools are discovered from the manifest
+  console.log('[openclaw-md-to-pdf] Plugin registered');
+}
+
+/**
+ * Activate plugin
+ * @param {Object} config - Plugin configuration
+ */
+function activate(config) {
+  try {
+    console.log('[openclaw-md-to-pdf] Plugin activated');
+  } catch (error) {
+    console.error('[openclaw-md-to-pdf] Error during activate:', error.message);
+  }
+}
+
+/**
  * Convert single Markdown file to PDF
  * @param {Object} params - Conversion parameters
  * @param {string} params.inputFile - Path to input Markdown file
@@ -75,6 +97,8 @@ async function md_to_pdf_batch(params) {
 }
 
 module.exports = {
+  register,
+  activate,
   md_to_pdf_convert,
   md_to_pdf_batch
 };
